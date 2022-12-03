@@ -1,0 +1,101 @@
+.profile_header {
+    margin-top:8%;
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color:#3d9bc2;
+    font-size: 1.8em;
+}
+.profile_image {
+    border-radius:50%;
+    width:10%;
+    height:10%;
+    margin-bottom:15px;
+}
+.profile_button {
+    border: none;
+    border-radius:4px;
+    background-color:#3d9bc2;
+    color:white;
+    height:40px;
+    width:150px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    margin-top:5%;
+    cursor:pointer;
+}
+.notFound_title {
+    margin-top:8%;
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color: #3d9bc2;
+    font-size: 1.8em;
+}
+.notFound_image {
+    width:30%;
+    height:30%;
+    margin-top:1%;
+}
+.app_input {
+    height: 50px;
+    width:400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+.app_topButton {
+    border: none;
+    border-radius:4px;
+    background-color:#3d9bc2;
+    color:white;
+    height:40px;
+    width:150px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    margin-top:3%;
+    cursor:pointer;
+}
+.app_bottomButton {
+    border: none;
+    border-radius:4px;
+    background-color:#97d1ef;
+    color:white;
+    height:40px;
+    width:150px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    margin-top:1%;
+    cursor:pointer;
+}
+.app_commentsHeader {
+    margin-top:1%;
+    margin-bottom:1%;
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color: #3d9bc2;
+    font-size: 1.2em;
+}
+.app_topHeader {
+    margin-top:8%;
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color: #3d9bc2;
+    font-size: 1.8em;
+}
+.app_author {
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color: #aaa;
+    font-size: 1.2em;
+}
+.app_image {
+    height:20%;
+    width:30%;
+    border:3px solid #3d9bc2;
+    border-radius:30px;
+}
+.comment_text {
+    font-family:Arial;
+    letter-spacing:-0.01em;
+    color: #222;
+    font-size: 0.9em;
+}

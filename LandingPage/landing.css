@@ -1,0 +1,103 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+    background: #B4B8AB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #414345, #B4B8AB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #414345, #B4B8AB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+
+input[type=text]{
+    color: white;
+    width: 60%;
+    font-size: 2rem;
+    height: 70px;
+    text-align: center;
+    transition: 0.6s;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    background-color: transparent;
+  }
+
+input[type=text]:focus {
+    outline: none;
+    border-bottom: 1px solid #28a2a2;
+}
+
+#name {
+    color: #28a2a2;
+}
+
+#submit {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px
+}
+
+
+#submit:hover {
+	box-shadow: 0 4px #1a8181;
+	top: 2px;
+}
+
+
+#submit:active {
+	box-shadow: 0 0 #1a8181;
+	top: 6px;
+}
+
+/* Add a black background color to the top navigation */
+header {
+    background-color: #55d6aa
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 10vh;
+}
+.topnav {
+  background-color: #55d6aa;
+  margin: 0;
+  padding: 0;
+  width: 100%
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
