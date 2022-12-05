@@ -101,7 +101,7 @@ function App() {
       <input className="app_input"
       onChange={(e) => {changeNewCommentValue(e.target.value)}}value={newComment} placeholder="Write a Comment Here!" />
 
-      <div style={{"clear":"both"}}></div>
+      <div style={{"clear":"both"}}></div> 
       <button className="app_topButton"
       onClick={() => {makeANewComment()}}>Add Comment!</button>
       {/* Q1: What function should go in here? Call it with ZERO parameters. */}
