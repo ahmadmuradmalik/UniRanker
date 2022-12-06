@@ -7,11 +7,11 @@ function ColorSchemesExample() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">UniRanker</Navbar.Brand>
+          <Navbar.Brand href="/">UniRanker</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Schools</Nav.Link>
-            <Nav.Link href="#pricing">Sign Up/Login</Nav.Link>
+            <Nav.Link href="home">Home</Nav.Link>
+            <Nav.Link href="schools">Schools</Nav.Link>
+            <Nav.Link href="login">Sign Up/Login</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

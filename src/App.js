@@ -1,15 +1,13 @@
-<<<<<<< HEAD
-import React from 'react';
 import './App.css';
 import Navbar from './Components/Navbar.js';
+import LandingPage from './Components/LandingPage.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-=======
 import './styles/App.css';
 import './styles/components.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Comment from './Comment.js';
+import Comment from './Components/Comment.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
@@ -24,10 +22,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
 
 // Authentication
-const auth = getAuth(app);
+/*const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 // Sign in
@@ -54,7 +52,7 @@ onAuthStateChanged(auth, (user) => {
 
 // Sets up firebase database
 const db = getFirestore(app);
-
+*/
 /*
 *** TO DO: combine use of firebase db with comment code to store in online db ***
 
@@ -67,8 +65,37 @@ const entryText = document.getElementById('entryText');
 */
 
 function App() {
+
   return (
+  <>
     <Navbar></Navbar>
+    <LandingPage></LandingPage>
+
+    </>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
+function Dashboard() {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+    </div>
   );
 }
 
