@@ -1,27 +1,62 @@
 import { Link } from 'react-router-dom';
-import './styles/components.css'
+//import './styles/components.css'
+import HomeNav from './Components/HomeNav.js';
+import React from "react";
+import {Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+//import { withRouter } from "react-router";
+import Sidebar from "./Components/Sidebar.js";
+import Input from "./Components/Input.js";
+import BoxInput from "./Components/BoxInput.js";
+import Tag from "./Components/Tag.js";
+import TagDropdown from "./Components/TagDropdown.js";
+import './Components/Components.css'
+
 const my_Profile_Picture = "./profilePicture.jpg";
 
 function Webpage(props) {
-
   return (
-    <div style={{"position":"relative", "margin-left":"10%"}}>
-      
-      <h3 className="profile_header">School</h3>
-      <img className="profile_image" src="https://res.cloudinary.com/netzero/image/upload/v1667609065/profilePicture_q5t5wc.jpg"/>
-      <div style={{"clear":"both"}}></div>
-      <a href="https://www.calhacks.io" onClick={(e) => disablePersonalWebsiteLink(e)}>This Link Shouldn't Work!</a>
-      <div style={{"clear":"both"}}></div>
+    <div>
+      <Row><HomeNav/></Row>
+      <Row>
+        <Col xs={2}>
+          <Tag/>
+          <TagDropdown/>
+        </Col>
+        <Col className="mainSec">
+          <img alt="" src="" ></img>
+          <h1>Name of School</h1>
+          <BoxInput></BoxInput>
 
-      {/* Q4: What can we wrap this button in (which tag e.g. <h1>, <p>, etc.) in order for it to go back Home? */}
-      <Link to="/">
-      <button className="profile_button">
-      Back to Home
-      </button>
-      </Link>
-
+          <Input></Input>
+        </Col>
+       
+        <Container>
+          Insert Comments Here
+        </Container>
+      </Row>
     </div>
   );
 }
+
+function clickInput(props){
+  //once input is clicked it expands and tags pop up 
+  return (
+    <div style={{"position":"relative", "margin-left":"10%"}}>
+      <Row><HomeNav/></Row>
+      <Row>
+        <Col>
+
+        </Col>
+        <img alt="" src="" ></img>
+        <h1>Name of School</h1>
+        <BoxInput></BoxInput>
+        <Container>
+          Insert Comments Here
+        </Container>
+      </Row>
+    </div>
+  );
+}
+
 
 export default Webpage;

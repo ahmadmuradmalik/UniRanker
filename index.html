@@ -1,82 +1,78 @@
-<!--
-    navbar
-    sidebar
-    image
+<!DOCTYPE html>
+<html lang="en">
 
-    use bootstrap
--->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Basics</title>
 
-import Nav from 'react-bootstrap/Nav';
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
 
-function BasicExample() {
-  return (
-    <Nav
-      activeKey="/home"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-    >
-      <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-1">Link</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-2">Link</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
-  );
-}
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
 
 
 
-import SidebarMenu from 'react-bootstrap-sidebar-menu';
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
+    integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+    crossorigin="anonymous"></script>
 
-<SidebarMenu>
-  <SidebarMenu.Header>
-    <SidebarMenu.Brand>
-      {/* Your brand icon */}
-    </SidebarMenu.Brand>
-    <SidebarMenu.Toggle />
-  </SidebarMenu.Header>
-  <SidebarMenu.Body>
-    <SidebarMenu.Nav>
-      <SidebarMenu.Nav.Link>
-        <SidebarMenu.Nav.Icon>
-          {/* Menu item icon */}
-        </SidebarMenu.Nav.Icon>
-        <SidebarMenu.Nav.Title>
-          {/* Menu item title */}
-        </SidebarMenu.Nav.Title>
-      </SidebarMenu.Nav.Link>
-    <SidebarMenu.Nav/>
-    <SidebarMenu.Sub>
-      <SidebarMenu.Sub.Toggle>
-        <SidebarMenu.Nav.Icon />
-        <SidebarMenu.Nav.Title>
-          {/* Submenu title */}
-        </SidebarMenu.Nav.Title>
-      </SidebarMenu.Sub.Toggle>
-      <SidebarMenu.Sub.Collapse>
-        <SidebarMenu.Nav>
-          <SidebarMenu.Nav.Link>
-            <SidebarMenu.Nav.Icon>
-              {/* Submenu item icon */}
-            </SidebarMenu.Nav.Icon>
-            <SidebarMenu.Nav.Title>
-              {/* Submenu item title */}
-            </SidebarMenu.Nav.Title>
-          </SidebarMenu.Nav.Link>
-        </SidebarMenu.Nav>
-      </SidebarMenu.Sub.Collapse>
-    </SidebarMenu.Sub>
-  <SidebarMenu.Body/>
-</SidebarMenu>
+  <style>
+    body {
+      margin:50px auto;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
+    li {
+      text-align: left;
+      text-decoration: none;
+      margin: auto;
+    }
+  </style>
+  <script type="module" src="./app.js" defer></script>
+</head>
+
+<body>
+
+  <h1>My Awesome Diary 🔥</h1>
+  <br/>
+  <section id="whenSignedOut">
+
+    <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+
+  </section>
+
+  <section id="whenSignedIn" hidden="true">
+
+    <div id="userDetails"></div>
+
+    <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
+
+  </section>
+
+  <hr>
+
+  <section>
+
+    <h2>My Diary Entries</h2>
+
+    <ul id="entryList">
+
+    </ul>
+    <input type="text" id="entryText"/>
+    <button id="createEntry" class="btn btn-success">Create Entry</button>
+
+  </section>
 
 
-<div></div>
-export default BasicExample;
+
+</body>
+
+
+</html>
