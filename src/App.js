@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
 import './App.css';
 import LandingPage from './Components/LandingPage.js';
+import Login from './Components/Login.js';
+import School from './Components/School.js';
 import Comment from './Components/Comment.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
@@ -97,34 +99,22 @@ function App() {
       onClick={() => {makeANewComment()}}>Add Comment!</button>
       {/* Q1: What function should go in here? Call it with ZERO parameters. */}
 
-    <LandingPage></LandingPage>
+    <Navbar></Navbar>
+
+    <Router>
+        <Routes>
+            <Route path="" element={<LandingPage/>} />
+
+            <Route path="/Login" element={<Login/>} />
+
+            <Route path="/Schools" element={<School/>} />
+
+        </Routes>
+    </Router>
 
     </div>
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 export default App;

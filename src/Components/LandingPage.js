@@ -1,13 +1,23 @@
 import React from 'react';
+import '../styles/landing.css'
 
 function LandingPage() {
   return (
-    <div className="App">
-
-              <h3 className="app_topHeader">This is my landingPage</h3>
-              <h4 className="app_author">ayo</h4>
-
-            </div>
+    <body>
+    <div class="any">
+    <img src="public/assets/landing.jpeg" alt="background pic">
+    </img>
+    <div class="wrapper">
+        <h2 id="name">Uni Ranker</h2>
+        <h1>Look up your School <input type="text" id="cityName"/>?</h1>
+        <button id="submit">Search</button>
+    </div>
+    <div id="weather">
+        <h2 id="mainWeather"></h2>
+        <p id="weatherDescription"></p>
+    </div>
+    </div>
+    </body>
   );
 }
 
