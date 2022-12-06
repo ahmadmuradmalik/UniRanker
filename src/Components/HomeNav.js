@@ -7,7 +7,7 @@ function HomeNav() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">UniRanker</Navbar.Brand>
+          <Navbar.Brand href="/">UniRanker</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#schools">Schools</Nav.Link>
             <Nav.Link href="#signup">Sign Up/Login</Nav.Link>
