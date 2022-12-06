@@ -2,12 +2,11 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-body {
+.any {
     background: #B4B8AB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #414345, #B4B8AB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #414345, #B4B8AB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: grid;
-    place-items: center;
     text-align: center;
     height: 100vh;
     margin: 0;
@@ -66,7 +65,7 @@ input[type=text]:focus {
 
 /* Add a black background color to the top navigation */
 header {
-    background-color: #55d6aa
+    background-color: #55d6aa;
     margin: 0;
     padding: 0;
     width: 100vw;
