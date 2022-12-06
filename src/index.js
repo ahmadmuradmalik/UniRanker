@@ -10,17 +10,6 @@ import {
   Link,
 } from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App/>,
-  },
-  {
-    path: "/Login",
-    element: <Login/>,
-  }
-]);
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
