@@ -1,11 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import './Components.css'
 
 function HomeNav() {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="nav" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">UniRanker</Navbar.Brand>
           <Nav className="me-auto">

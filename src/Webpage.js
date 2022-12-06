@@ -18,45 +18,22 @@ function Webpage(props) {
     <div>
       <Row><HomeNav/></Row>
       <Row>
-        <Col xs={2}>
-          <Tag/>
-          <TagDropdown/>
+        <Col xs={3}>
+          <Sidebar/>
         </Col>
         <Col className="mainSec">
           <img alt="" src="" ></img>
           <h1>Name of School</h1>
           <BoxInput></BoxInput>
-
-          <Input></Input>
+          <Container>
+            Insert Comments Here
+          </Container>
         </Col>
-       
-        <Container>
-          Insert Comments Here
-        </Container>
       </Row>
     </div>
   );
 }
 
-function clickInput(props){
-  //once input is clicked it expands and tags pop up 
-  return (
-    <div style={{"position":"relative", "margin-left":"10%"}}>
-      <Row><HomeNav/></Row>
-      <Row>
-        <Col>
-
-        </Col>
-        <img alt="" src="" ></img>
-        <h1>Name of School</h1>
-        <BoxInput></BoxInput>
-        <Container>
-          Insert Comments Here
-        </Container>
-      </Row>
-    </div>
-  );
-}
 
 
 export default Webpage;

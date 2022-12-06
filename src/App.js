@@ -1,22 +1,13 @@
-import React from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 import HomeNav from './Components/HomeNav.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 // ok import './styles/components.css';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
 import './App.css';
-import Navbar from './Components/Navbar.js';
 import LandingPage from './Components/LandingPage.js';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/App.css';
-import './styles/components.css';
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Comment from './Components/Comment.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
@@ -38,7 +29,7 @@ const app = initializeApp(firebaseConfig);
 // Authentication
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-
+/* ok
 
 // Sign in
 signInBtn.onclick = () => signInWithPopup(auth, provider);
@@ -106,7 +97,6 @@ function App() {
       onClick={() => {makeANewComment()}}>Add Comment!</button>
       {/* Q1: What function should go in here? Call it with ZERO parameters. */}
 
-    <Navbar></Navbar>
     <LandingPage></LandingPage>
 
     </div>

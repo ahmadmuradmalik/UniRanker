@@ -3,17 +3,17 @@ import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './Components.css'
 
-const Sidebar = props => {
+function Sidebar() {
    
     return (
         <>
     
-            <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
+            <Nav className="col-md d-none d-md-block sidebar"
             activeKey="/home"
             onSelect={selectedKey => alert(`selected ${selectedKey}`)}
             >
                 <div className="sidebar-sticky"></div>
-            <Nav.Item>
+            <Nav.Item className="item">
                 <Nav.Link eventKey="classes">Classes</Nav.Link>
             </Nav.Item>
             <Nav.Item>
@@ -30,5 +30,5 @@ const Sidebar = props => {
         </>
         );
   };
-  //const Sidebar = withRouter(Side);
+
   export default Sidebar
