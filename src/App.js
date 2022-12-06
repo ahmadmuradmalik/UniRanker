@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 import HomeNav from './Components/HomeNav.js';
@@ -9,7 +8,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
-=======
 import './App.css';
 import Navbar from './Components/Navbar.js';
 import LandingPage from './Components/LandingPage.js';
@@ -20,7 +18,6 @@ import './styles/components.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Comment from './Components/Comment.js';
->>>>>>> 1eee5b01a9473f987a3dfd1ca688b053279834ef
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
@@ -36,13 +33,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-//const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Authentication
-/*const auth = getAuth(app);
+const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-/* ok
+
 // Sign in
 signInBtn.onclick = () => signInWithPopup(auth, provider);
 
@@ -67,7 +64,7 @@ onAuthStateChanged(auth, (user) => {
 
 // Sets up firebase database
 const db = getFirestore(app);
-*/
+
 /*
 *** TO DO: combine use of firebase db with comment code to store in online db ***
 
@@ -88,16 +85,10 @@ var newComment = "0"
 
 
 function App() {
-
   return (
-<<<<<<< HEAD
     <div className="App">
       <Webpage/>
 
-      <h3 className="app_topHeader">This is my Social Media Post</h3>
-      <h4 className="app_author">Ddoski_123</h4>
-
-      <img alt="" className="app_image" src="assets/oskiBeach.jpeg"/>
 
       <div className="app_commentsHeader">Comments:</div>
 
@@ -115,13 +106,10 @@ function App() {
       onClick={() => {makeANewComment()}}>Add Comment!</button>
       {/* Q1: What function should go in here? Call it with ZERO parameters. */}
 
-
-=======
-  <>
     <Navbar></Navbar>
     <LandingPage></LandingPage>
 
-    </>
+    </div>
   );
 }
 
@@ -145,7 +133,6 @@ function Dashboard() {
   return (
     <div>
       <h2>Dashboard</h2>
->>>>>>> 1eee5b01a9473f987a3dfd1ca688b053279834ef
     </div>
   );
 }
