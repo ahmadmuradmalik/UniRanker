@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar.js';
 import LandingPage from './Components/LandingPage.js';
+import Login from './Components/Login.js';
+import School from './Components/School.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
@@ -107,34 +109,21 @@ function App() {
       {/* Q1: What function should go in here? Call it with ZERO parameters. */}
 
     <Navbar></Navbar>
-    <LandingPage></LandingPage>
+
+    <Router>
+        <Routes>
+            <Route path="" element={<LandingPage/>} />
+
+            <Route path="/Login" element={<Login/>} />
+
+            <Route path="/Schools" element={<School/>} />
+
+        </Routes>
+    </Router>
 
     </div>
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
 
 export default App;
