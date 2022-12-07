@@ -10,7 +10,7 @@ import './App.css';
 import LandingPage from './Components/LandingPage.js';
 import Login from './Components/Login.js';
 import School from './Components/School.js';
-import Comment from './Components/Comment.js';
+import Comment from './Components/CommentBox.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
@@ -82,24 +82,6 @@ function App() {
     <div className="App">
       <Webpage/>
 
-
-      <div className="app_commentsHeader">Comments:</div>
-
-      {/* okcomments ? comments.map((comment) => {
-        console.log('should return?')
-        return <Comment text={comment} key={comment} key1={comment} />;
-
-      }) : ''*/}
-
-      <input className="app_input"
-      onChange={(e) => {changeNewCommentValue(e.target.value)}}value={newComment} placeholder="Write a Comment Here!" />
-
-      <div style={{"clear":"both"}}></div> 
-      <button className="app_topButton"
-      onClick={() => {makeANewComment()}}>Add Comment!</button>
-      {/* Q1: What function should go in here? Call it with ZERO parameters. */}
-
-    <Navbar></Navbar>
 
     <Router>
         <Routes>
