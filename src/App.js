@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-let commentRef = collection(db, "commentEntries")
+let commentRef = collection(db, "commentsTest")
 
 let findEntries = async (uniID) => {
   const q = query(commentRef, where('schoolID', '==', uniID.schoolID));
