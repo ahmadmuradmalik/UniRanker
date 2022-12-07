@@ -29,6 +29,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+const db = getFirestore(app);
+
+let commentRef = collection(db, "commentEntries")
+
+let findEntries = async (uniID) => {
+  const q = query(commentRef, where('schoolID', '==', uniID.schoolID));
+  const querySnapshot = await getDocs(q)
+// Check in browser developer tools console to test
+  querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+// I think this returns a list of docs w/ timestap
+  const items = querySnapshot.docs.map(doc => {
+      return `<li>${doc.data().timestamp.toDateString()}: ${doc.data().entry}</li>`
+    });
+}
+
 function App() {
   return (
     <div>
