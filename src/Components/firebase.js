@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {initializeApp} from 'firebase/app'
 import { getFirestore, collection, query, orderBy, limit, getDocs} from "firebase/firestore";
 

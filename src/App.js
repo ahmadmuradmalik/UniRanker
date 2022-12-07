@@ -21,39 +21,79 @@ import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDo
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0ydrhQpKBhVFjKesFxOLUREATXsViESI",
-  authDomain: "uni-rater-db.firebaseapp.com",
-  projectId: "uni-rater-db",
-  storageBucket: "uni-rater-db.appspot.com",
-  messagingSenderId: "887960388280",
-  appId: "1:887960388280:web:5a72532eccfb944a006a4d"
+  apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
+  authDomain: "unirater-48c7b.firebaseapp.com",
+  projectId: "unirater-48c7b",
+  storageBucket: "unirater-48c7b.appspot.com",
+  messagingSenderId: "900822460794",
+  appId: "1:900822460794:web:fe066774481716c2438ec3"
 };
 
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app)
 
-
+let arr = 
+  [
+    {
+      commentDateTime: "3pm",
+      commentText: "Go bears!"  
+    }, 
+    {
+      commentDateTime: "2pm",
+      commentText: "Go afsbears!"  }, 
+    {
+      commentDateTime: "1pm",
+      commentText: "Go bearsafsdaf!"  }]
 
 
 function App() {
+  const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
+  const [schools, setSchools] = useState([{ school: "school", docID: "initial" }]);
+    try{
+        useEffect(
+          () =>
+            onSnapshot(collection(db, "schools"), (snapshot) =>
+              setSchools(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+            )
+            , []);
+      } catch (error){
+        console.error(error);
+      }
+      try{
+        useEffect(
+          () =>
+            onSnapshot(collection(db, "comments"), (snapshot) =>
+              setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+            )
+            , []);
+          
+      } catch (error){
+        console.error(error);
+      }
 
-
+    const saveComment = (input) => {
+        addDoc(collection(db, "comments"), {
+          classes: false,
+          food: false,
+          misc: true,
+          rent: false,
+          text: input,
+        });
+    };
   return (
     <div>
-    <HomeNav></HomeNav>
 
     <Router>
         <Routes>
 
 
-            <Route path="" element={<LandingPage/>} />
-
+            <Route path="" element={<LandingPage schools={schools}/>} />
             <Route path="/Login" element={<GoogleLogin/>} />
 
-            <Route path="/Schools" element={<SearchBar/>} />
+            <Route path="/Schools" element={<SearchBar />} />
 
-            <Route path="/main" element={<Webpage/>} />
+            <Route path="/main" element={<Webpage saveComment={saveComment} comments={comments}/>} />
 
         </Routes>
     </Router>

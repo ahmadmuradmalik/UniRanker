@@ -2,14 +2,26 @@ import { Container } from "react-bootstrap";
 import './Components.css'
 import Comment from "./Comment";
 
-function CommentBox() {
+function CommentBox({comments}) {
+  /*{comments.map((comment) => (
+          <li key={comment.id}>
+            {comment.item}
+          </li>
+
+       ))}*/
+       console.log(comments)
 
   return (
     <Container className="commentDiv">
-      <Comment/>
+      {comments?.map((comment) => (
+          <Comment key={comment.docID} commentText={comment.text}>
+          </Comment>
+       ))}
     </Container>
     
     );
+
+    // listComments is a function that finds all the entries written by a user!
 }
 
 export default CommentBox;

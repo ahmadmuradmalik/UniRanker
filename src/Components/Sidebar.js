@@ -14,6 +14,9 @@ function Sidebar() {
             >
             <div className="sidebar-sticky"></div>
             <Nav.Item className="item">
+                <Nav.Link eventKey="all">All</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="item">
                 <Nav.Link eventKey="classes">Classes</Nav.Link>
             </Nav.Item>
             <Nav.Item className="item">

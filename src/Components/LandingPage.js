@@ -1,19 +1,21 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import '../styles/landing.css'
 import landingPic from '../banner.webp'; // with import
 import SearchBar from "./SearchBar.js";
-import data from "../Components/data.json"
+import data from "../Components/data.json";
+import HomeNav from './HomeNav';
 
-function LandingPage() {
+function LandingPage({schools}) {
+
   return (
-
     <body>
+          <HomeNav/>
     <div class="any">
     <div class="wrapper">
         <h1 id="name">Uni Ranker</h1>
         <h2 id="lookup">Look up your School</h2>
         <div className="App">
-              <SearchBar placeholder="Enter school name..." data={data} />
+              <SearchBar placeholder="Enter school name..." data={schools} key={schools.docs}/>
             </div>
     </div>
     <div id="weather">

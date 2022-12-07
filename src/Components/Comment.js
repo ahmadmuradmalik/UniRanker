@@ -3,8 +3,7 @@ import './Components.css';
 import TagButton from './TagButton.js';
 import Tag from './Tag.js';
 
-function Comment(props) {
-  const { text } = props;
+function Comment({commentText}) {
 
   return (
     <Container className="comment">
@@ -12,8 +11,8 @@ function Comment(props) {
         <Row>
             <div className="commentInfo">
                 <h3 className="username">Name</h3>
-                <p className="commentPara">Comments</p>
-                <p className="commentPara">{text}</p>
+                <p className="commentPara">{commentText}</p>
+                <p className="commentPara">h</p>
             </div>
         </Row>
         <Row>
