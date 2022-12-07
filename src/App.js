@@ -15,6 +15,7 @@ import Comment from './Components/Comment.js';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
+import { onSnapshot, doc } from 'firebase/firestore';
 import Webpage from './Webpage';
 
 const firebaseConfig = {
@@ -28,9 +29,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
+/*
 let commentRef = collection(db, "commentsTest")
 
 let findEntries = async (uniID) => {
@@ -40,13 +41,25 @@ let findEntries = async (uniID) => {
   querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
     });
+
 // I think this returns a list of docs w/ timestap
   const items = querySnapshot.docs.map(doc => {
       return `<li>${doc.data().timestamp.toDateString()}: ${doc.data().entry}</li>`
-    });
+    });  
 }
+*/
 
 function App() {
+  const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "commentsTest"), (snapshot) => 
+        setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+      ),
+    []
+  );
+
   return (
     <div>
     <HomeNav></HomeNav>
