@@ -1,16 +1,21 @@
-import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-function OutlineTypesExample() {
+function Tag() {
   return (
-    <>
-      <Button variant="outline-primary">Primary</Button>{' '}
-      <Button variant="outline-info">Info</Button>{' '}
-      <Button variant="outline-success">Success</Button>{' '}
-      <Button variant="outline-warning">Warning</Button>{' '}
-      <Button variant="outline-danger">Danger</Button>{' '}
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Dropdown Button
+      </Dropdown.Toggle>
 
-    </>
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">School</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Food</Dropdown.Item>
+        <Dropdown.Item href="#/action-3"></Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 
-export default OutlineTypesExample;
+export default Tag;
