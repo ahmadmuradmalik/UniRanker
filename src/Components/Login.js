@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 import { Link } from 'react-router-dom';
+import { auth, db, signInWithGoogle, logout } from './Firebase.js'
 const my_Profile_Picture = "./profilePicture.jpg";
 
 function Login() {
@@ -13,3 +16,4 @@ function Login() {
 }
 export default Login;
 
+>>>>>>> 4d09577084d8d330e1646ca1044e927aa4a46cdb
