@@ -1,148 +1,99 @@
 import React, { useState, useEffect } from 'react';
 import HomeNav from './Components/HomeNav.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SearchBar from './Components/SearchBar.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 // ok import './styles/components.css';
 import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
 import './App.css';
+import Webpage from './Webpage.js';
 import LandingPage from './Components/LandingPage.js';
-import Login from './Components/Login.js';
+import GoogleLogin from './Components/GoogleLogin.js';
 import School from './Components/School.js';
-import Comment from './Components/CommentBox.js';
-import Webpage from './Webpage';
-//import { db } from './Firebase.js';
-import { v4 as uuid } from "uuid";
-import {onSnapshot} from 'firebase/firestore';
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
-import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
-import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
+import Comment from './Components/Comment.js';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, child, get } from "firebase/database";
+import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+
+import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0ydrhQpKBhVFjKesFxOLUREATXsViESI",
-  authDomain: "uni-rater-db.firebaseapp.com",
-  projectId: "uni-rater-db",
-  storageBucket: "uni-rater-db.appspot.com",
-  messagingSenderId: "887960388280",
-  appId: "1:887960388280:web:5a72532eccfb944a006a4d"
+  apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
+  authDomain: "unirater-48c7b.firebaseapp.com",
+  projectId: "unirater-48c7b",
+  storageBucket: "unirater-48c7b.appspot.com",
+  messagingSenderId: "900822460794",
+  appId: "1:900822460794:web:fe066774481716c2438ec3"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Authentication
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const db = getFirestore(app)
 
-
-// Sets up firebase database
-const db = getFirestore(app);
+let arr = 
+  [
+    {
+      commentDateTime: "3pm",
+      commentText: "Go bears!"  
+    }, 
+    {
+      commentDateTime: "2pm",
+      commentText: "Go afsbears!"  }, 
+    {
+      commentDateTime: "1pm",
+      commentText: "Go bearsafsdaf!"  }]
 
 
 function App() {
-  
-  //let commentRef = collection(db, "comments");
   const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
+  const [schools, setSchools] = useState([{ school: "school", docID: "initial" }]);
+    try{
+        useEffect(
+          () =>
+            onSnapshot(collection(db, "schools"), (snapshot) =>
+              setSchools(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+            )
+            , []);
+      } catch (error){
+        console.error(error);
+      }
+      try{
+        useEffect(
+          () =>
+            onSnapshot(collection(db, "comments"), (snapshot) =>
+              setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+            )
+            , []);
+          
+      } catch (error){
+        console.error(error);
+      }
 
-          useEffect(
-            () =>
-              onSnapshot(collection(db, "commentsTest"), (snapshot) =>
-                setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
-              )
-              ,
-
-          );
-/*
-  const sendComment = (comment) => {
-    db.collection("comments").add({
-      id: uuid(),
-      comment: comment,
-    });
-  };
-
-  const getComments = () => {
-    commentRef.onSnapshot((querySnapShot) => {
-      const saveFirebaseComments = [];
-      querySnapShot.forEach((doc) => {
-        saveFirebaseComments.push(doc.data());
-      });
-      setComments(saveFirebaseComments);
-    });
-  };
-
-  // This creates a reference to the collection of diary "entries" in your database.
-
-  /*
-  const createComment = document.getElementById('createEntry');
-  const commentList = document.getElementById('commentList');
-  const commentText = document.getElementById('commentText');
-  
-  function changeNewCommentValue(){
-  
-  }
-  function makeANewComment(){
-  
-  }
-  var newComment = "0"
-  
-  //list all comments associated with that specific school
-  let listAllComments  = async (school) => {
-  
-    //////// QUESTION 3: Find all documents related to the query you are making below! (Hint: Check the homework spec) ////////
-    const q = commentRef.query('school', '==', school);
-    const querySnapshot = /* YOUR CODE HERE */ //await getDocs(q);
-  
-    // Helper Code for Testing: This prints all the documents/entries you found and their IDs in the console! (Browser Developer Tools)
-   /* querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-  
-    const items = querySnapshot.docs.map(doc => {
-        return `<li>${doc.data().timestamp.toDate().toDateString()}: ${doc.data().entry}</li>`
-    });
-  
-    commentList.innerHTML = items.join('');
-  
-    //////// END OF QUESTION 3 ////////
-  }
-  /*
-  let listClassesComments  = async (tab) => {
-  
-    //////// QUESTION 3: Find all documents related to the query you are making below! (Hint: Check the homework spec) ////////
-    const q = query(commentRef, where(tab, '==', true)); //tab type = true
-    const querySnapshot = /* YOUR CODE HERE */// await getDocs(q);
-  
-    // Helper Code for Testing: This prints all the documents/entries you found and their IDs in the console! (Browser Developer Tools)
-    /*querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-  
-      //change to create comment that is better ,atxhed
-    const items = querySnapshot.docs.map(doc => {
-        return `<li>${doc.data().timestamp.toDate().toDateString()}: ${doc.data().entry}</li>`
-    });
-  
-    commentList.innerHTML = items.join('');
-  
-    //////// END OF QUESTION 3 ////////
-    sendComment={sendComment} getComments={getComments} comments={comments}
-  }
-  */
-  
+    const saveComment = (input) => {
+        addDoc(collection(db, "comments"), {
+          classes: false,
+          food: false,
+          misc: true,
+          rent: false,
+          text: input,
+        });
+    };
   return (
-    <div className="App">
-      <Webpage />
-
+    <div>
 
     <Router>
         <Routes>
-            <Route path="" element={<LandingPage/>} />
 
-            <Route path="/Login" element={<Login/>} />
 
-            <Route path="/Schools" element={<School/>} />
+            <Route path="" element={<LandingPage schools={schools}/>} />
+            <Route path="/Login" element={<GoogleLogin/>} />
+
+            <Route path="/Schools" element={<SearchBar />} />
+
+            <Route path="/main" element={<Webpage saveComment={saveComment} comments={comments}/>} />
 
         </Routes>
     </Router>

@@ -3,13 +3,13 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChang
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA0ydrhQpKBhVFjKesFxOLUREATXsViESI",
-    authDomain: "uni-rater-db.firebaseapp.com",
-    projectId: "uni-rater-db",
-    storageBucket: "uni-rater-db.appspot.com",
-    messagingSenderId: "887960388280",
-    appId: "1:887960388280:web:5a72532eccfb944a006a4d"
-  };
+    apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
+    authDomain: "unirater-48c7b.firebaseapp.com",
+    projectId: "unirater-48c7b",
+    storageBucket: "unirater-48c7b.appspot.com",
+    messagingSenderId: "900822460794",
+    appId: "1:900822460794:web:fe066774481716c2438ec3"
+};
   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);

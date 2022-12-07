@@ -7,14 +7,16 @@ function CommentBox({comments}) {
           <li key={comment.id}>
             {comment.item}
           </li>
+
        ))}*/
+       console.log(comments)
 
   return (
     <Container className="commentDiv">
-       
-      <Comment/>
-      <Comment/>
-      <Comment/>
+      {comments?.map((comment) => (
+          <Comment key={comment.docID} commentText={comment.text}>
+          </Comment>
+       ))}
     </Container>
     
     );

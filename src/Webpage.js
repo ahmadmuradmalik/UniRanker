@@ -14,26 +14,43 @@ import School from './Components/School.js'
 
 const my_Profile_Picture = "./profilePicture.jpg";
 
-function Webpage() {
+function Webpage({saveComment, comments}) {
+
+  //if/else what school return comments related to that school
+  //pass those comments into designated place
+
   return (
     <div>
-      <Row><HomeNav/></Row>
       <Row>
-        <Col xs={2}>
-          <Sidebar/>
-        </Col>
-        <Col className="mainSec">
-          <Row>
-              <School></School>
+        <Row>
+          <HomeNav></HomeNav>
           </Row>
-          <Row>
-            <BoxInput ></BoxInput>
-          </Row>
-          <Row>
-            <CommentBox/>
-          </Row>
-        </Col>
-        
+        <Row>
+          <Col xs={2}>
+            <Sidebar/>
+          </Col>
+          <Col className="mainSec">
+            <Row>
+            <div className="App">
+            <div className="schoolInfoDiv">
+                  <img className="schoolPic" alt="" src="https://www.tclf.org/sites/default/files/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_byCharlieNguyen-Flickr_2008_001_Sig.jpg" ></img>
+                  <h1 className="schoolName">Name of School</h1>
+                  <Row>
+                    <p className="schoolInfo">School Description</p>
+                  </Row>
+            </div>
+
+          </div>
+                <School></School>
+            </Row>
+            <Row>
+              <BoxInput saveComment={saveComment}></BoxInput>
+            </Row>
+            <Row>
+              <CommentBox comments={comments}/>
+            </Row>
+          </Col>
+        </Row>        
       </Row>
     </div>
   );

@@ -6,97 +6,94 @@
     background: #B4B8AB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #414345, #B4B8AB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #414345, #B4B8AB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url('banner.webp');
+    background-repeat: no-repeat;
+    webkit-background-size: cover;
+    background-size: cover;
+    place-items: center;
     display: grid;
     text-align: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    color: white;
 }
 
 
 input[type=text]{
-    color: white;
-    width: 60%;
-    font-size: 2rem;
-    height: 70px;
+    color: blue;
     text-align: center;
     transition: 0.6s;
     border: none;
-    border-bottom: 1px solid #CCC;
-    background-color: transparent;
   }
-
-input[type=text]:focus {
-    outline: none;
-    border-bottom: 1px solid #28a2a2;
-}
 
 #name {
     color: #28a2a2;
+    position:relative;
+    top:30px;
+    left:0px;
+    margin-left:0px;
+    margin-right:0px;
+}
+#lookup {
+    color: black;
+    position:relative;
+    top:80px;
+    left:0px;
+    margin-left:0px;
+    margin-right:0px;
 }
 
-#submit {
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: pointer;
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px
+/* Search Bar css */
+
+.searchInputs {
+  margin-top: 105px;
+  display: flex;
+}
+
+.search input {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 300px;
 }
 
 
-#submit:hover {
-	box-shadow: 0 4px #1a8181;
-	top: 2px;
+input:focus {
+  outline: none;
 }
 
 
-#submit:active {
-	box-shadow: 0 0 #1a8181;
-	top: 6px;
+.dataResult {
+  margin-top: 5px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
-/* Add a black background color to the top navigation */
-header {
-    background-color: #55d6aa;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 10vh;
-}
-.topnav {
-  background-color: #55d6aa;
-  margin: 0;
-  padding: 0;
-  width: 100%
-
+.dataResult::-webkit-scrollbar {
+  display: none;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: right;
-  color: #f2f2f2;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
   color: black;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+.dataItem p {
+  margin-left: 10px;
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightgrey;
 }
