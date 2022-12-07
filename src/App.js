@@ -11,10 +11,14 @@ import LandingPage from './Components/LandingPage.js';
 import Login from './Components/Login.js';
 import School from './Components/School.js';
 import Comment from './Components/CommentBox.js';
+import Webpage from './Webpage';
+//import { db } from './Firebase.js';
+import { v4 as uuid } from "uuid";
+import {onSnapshot} from 'firebase/firestore';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js';
 import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
-import Webpage from './Webpage';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0ydrhQpKBhVFjKesFxOLUREATXsViESI",
@@ -31,56 +35,105 @@ const app = initializeApp(firebaseConfig);
 // Authentication
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-/* ok
 
-// Sign in
-signInBtn.onclick = () => signInWithPopup(auth, provider);
-
-// Sign out
-signOutBtn.onclick = () => {
-  signOut(auth, provider);
-  location.reload()
-}
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-      // If a user signs in:
-      whenSignedIn.hidden = false;
-      whenSignedOut.hidden = true;
-      userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${user.uid}</p>`;
-  } else {
-      whenSignedIn.hidden = true;
-      whenSignedOut.hidden = false;
-      userDetails.innerHTML = '';
-  }
-});
 
 // Sets up firebase database
 const db = getFirestore(app);
 
-/*
-*** TO DO: combine use of firebase db with comment code to store in online db ***
-
-// This creates a reference to the collection of diary "entries" in your database.
-let entryRef = collection(db, "entries")
-
-const createEntry = document.getElementById('createEntry');
-const entryList = document.getElementById('entryList');
-const entryText = document.getElementById('entryText');
-*/
-function changeNewCommentValue(){
-
-}
-function makeANewComment(){
-
-}
-var newComment = "0"
-
 
 function App() {
+  
+  //let commentRef = collection(db, "comments");
+  const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
+
+          useEffect(
+            () =>
+              onSnapshot(collection(db, "commentsTest"), (snapshot) =>
+                setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+              )
+              ,
+
+          );
+/*
+  const sendComment = (comment) => {
+    db.collection("comments").add({
+      id: uuid(),
+      comment: comment,
+    });
+  };
+
+  const getComments = () => {
+    commentRef.onSnapshot((querySnapShot) => {
+      const saveFirebaseComments = [];
+      querySnapShot.forEach((doc) => {
+        saveFirebaseComments.push(doc.data());
+      });
+      setComments(saveFirebaseComments);
+    });
+  };
+
+  // This creates a reference to the collection of diary "entries" in your database.
+
+  /*
+  const createComment = document.getElementById('createEntry');
+  const commentList = document.getElementById('commentList');
+  const commentText = document.getElementById('commentText');
+  
+  function changeNewCommentValue(){
+  
+  }
+  function makeANewComment(){
+  
+  }
+  var newComment = "0"
+  
+  //list all comments associated with that specific school
+  let listAllComments  = async (school) => {
+  
+    //////// QUESTION 3: Find all documents related to the query you are making below! (Hint: Check the homework spec) ////////
+    const q = commentRef.query('school', '==', school);
+    const querySnapshot = /* YOUR CODE HERE */ //await getDocs(q);
+  
+    // Helper Code for Testing: This prints all the documents/entries you found and their IDs in the console! (Browser Developer Tools)
+   /* querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+      });
+  
+    const items = querySnapshot.docs.map(doc => {
+        return `<li>${doc.data().timestamp.toDate().toDateString()}: ${doc.data().entry}</li>`
+    });
+  
+    commentList.innerHTML = items.join('');
+  
+    //////// END OF QUESTION 3 ////////
+  }
+  /*
+  let listClassesComments  = async (tab) => {
+  
+    //////// QUESTION 3: Find all documents related to the query you are making below! (Hint: Check the homework spec) ////////
+    const q = query(commentRef, where(tab, '==', true)); //tab type = true
+    const querySnapshot = /* YOUR CODE HERE */// await getDocs(q);
+  
+    // Helper Code for Testing: This prints all the documents/entries you found and their IDs in the console! (Browser Developer Tools)
+    /*querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+      });
+  
+      //change to create comment that is better ,atxhed
+    const items = querySnapshot.docs.map(doc => {
+        return `<li>${doc.data().timestamp.toDate().toDateString()}: ${doc.data().entry}</li>`
+    });
+  
+    commentList.innerHTML = items.join('');
+  
+    //////// END OF QUESTION 3 ////////
+    sendComment={sendComment} getComments={getComments} comments={comments}
+  }
+  */
+  
   return (
     <div className="App">
-      <Webpage/>
+      <Webpage />
 
 
     <Router>

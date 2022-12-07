@@ -10,10 +10,11 @@ import BoxInput from "./Components/BoxInput.js";
 import TagButton from "./Components/TagButton.js";
 import './Components/Components.css'
 import CommentBox from './Components/CommentBox.js';
+import School from './Components/School.js'
 
 const my_Profile_Picture = "./profilePicture.jpg";
 
-function Webpage(props) {
+function Webpage() {
   return (
     <div>
       <Row><HomeNav/></Row>
@@ -23,16 +24,10 @@ function Webpage(props) {
         </Col>
         <Col className="mainSec">
           <Row>
-              <div className="schoolInfoDiv">
-                <img className="schoolPic" alt="" src="https://www.tclf.org/sites/default/files/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_byCharlieNguyen-Flickr_2008_001_Sig.jpg" ></img>
-                <h1 className="schoolName">Name of School</h1>
-                <Row>
-                  <p className="schoolInfo">School Description</p>
-                </Row>
-              </div>
+              <School></School>
           </Row>
           <Row>
-            <BoxInput></BoxInput>
+            <BoxInput ></BoxInput>
           </Row>
           <Row>
             <CommentBox/>
