@@ -16,6 +16,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+<<<<<<< HEAD
 const firebaseConfig = {
   apiKey: "AIzaSyDIXJ5YT7hoNbBFqK3TBcV41-TzIO-7n7w",
   authDomain: "fir-auth-6edd8.firebaseapp.com",
@@ -25,10 +26,7 @@ const firebaseConfig = {
   appId: "1:904760319835:web:44fd0d957f114b4e51447e",
   measurementId: "G-Q4TYKH9GG7",
 };
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const googleProvider = new GoogleAuthProvider();
+
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -48,6 +46,7 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -83,12 +82,4 @@ const sendPasswordReset = async (email) => {
 const logout = () => {
   signOut(auth);
 };
-export {
-  auth,
-  db,
-  signInWithGoogle,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  sendPasswordReset,
-  logout,
-};
+
