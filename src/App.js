@@ -16,8 +16,8 @@ import Comment from './Components/Comment.js';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
-import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
 
+import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -30,29 +30,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app)
 
 
 
 
 function App() {
-
-        const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
-
-          useEffect(
-            () =>
-              onSnapshot(collection(db, "commentsTest"), (snapshot) =>
-                setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
-
-
-              )
-              ,
-
-          );
-          console.log(comments)
-
-
-
 
 
   return (
