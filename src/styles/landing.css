@@ -6,17 +6,22 @@
     background: #B4B8AB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #414345, #B4B8AB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #414345, #B4B8AB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url('banner.webp');
+    background-size: 800px;
+    background-repeat: no-repeat;
+    background-position: center ;
+    place-items: center;
     display: grid;
     text-align: center;
     height: 100vh;
     margin: 0;
     padding: 0;
-    color: white;
+    color: black;
 }
 
 
 input[type=text]{
-    color: white;
+    color: black;
     width: 60%;
     font-size: 2rem;
     height: 70px;
@@ -99,4 +104,8 @@ header {
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+.pic {
+  width: 200px;
 }
