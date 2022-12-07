@@ -16,7 +16,6 @@ const my_Profile_Picture = "./profilePicture.jpg";
 function Webpage(props) {
   return (
     <div>
-      <Row><HomeNav/></Row>
       <Row>
         <Col xs={3}>
           <Sidebar/>

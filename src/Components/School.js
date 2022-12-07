@@ -23,7 +23,8 @@ export default School; */
 
 // bootstrap card and grid layout
 
-function GridExample() {
+function School(comments) {
+   console.log(comments)
   return (
     <Row xs={1} md={2} className="g-4">
       {Array.from({ length: 4 }).map((_, idx) => (
@@ -42,7 +43,8 @@ function GridExample() {
         </Col>
       ))}
     </Row>
+
   );
 }
 
-export default GridExample;
+export default School;

@@ -8,14 +8,17 @@ import './App.css';
 import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
 import './App.css';
+import Webpage from './Webpage.js';
 import LandingPage from './Components/LandingPage.js';
 import GoogleLogin from './Components/GoogleLogin.js';
 import School from './Components/School.js';
 import Comment from './Components/Comment.js';
 import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, addDoc, collection, query, where, getDocs, Timestamp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js';
-import Webpage from './Webpage';
+import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0ydrhQpKBhVFjKesFxOLUREATXsViESI",
@@ -26,10 +29,32 @@ const firebaseConfig = {
   appId: "1:887960388280:web:5a72532eccfb944a006a4d"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
+
+
+
 
 function App() {
+
+        const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
+
+          useEffect(
+            () =>
+              onSnapshot(collection(db, "commentsTest"), (snapshot) =>
+                setComments(snapshot.docs.map((doc) => ({...doc.data(), docID: doc.id})))
+
+
+              )
+              ,
+
+          );
+          console.log(comments)
+
+
+
+
+
   return (
     <div>
     <HomeNav></HomeNav>
@@ -44,7 +69,7 @@ function App() {
 
             <Route path="/Schools" element={<SearchBar/>} />
 
-            <Route path="/search" element={<SearchBar/>} />
+            <Route path="/main" element={<Webpage/>} />
 
         </Routes>
     </Router>
