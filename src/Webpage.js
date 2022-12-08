@@ -14,7 +14,7 @@ import School from './Components/School.js'
 
 const my_Profile_Picture = "./profilePicture.jpg";
 
-function Webpage({saveComment, comments}) {
+function Webpage({saveComment, comments, saveTab, saveTag}) {
 
   //if/else what school return comments related to that school
   //pass those comments into designated place
@@ -27,7 +27,7 @@ function Webpage({saveComment, comments}) {
           </Row>
         <Row>
           <Col xs={2}>
-            <Sidebar/>
+            <Sidebar saveTab={saveTab}/>
           </Col>
           <Col className="mainSec">
             <Row>
@@ -41,10 +41,9 @@ function Webpage({saveComment, comments}) {
             </div>
 
           </div>
-                <School></School>
             </Row>
             <Row>
-              <BoxInput saveComment={saveComment}></BoxInput>
+              <BoxInput saveTag={saveTag} saveComment={saveComment}></BoxInput>
             </Row>
             <Row>
               <CommentBox comments={comments}/>
