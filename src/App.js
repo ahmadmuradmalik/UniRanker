@@ -11,12 +11,12 @@ import './App.css';
 import Webpage from './Webpage.js';
 import LandingPage from './Components/LandingPage.js';
 import GoogleLogin from './Components/GoogleLogin.js';
-import School from './Components/School.js';
 import Comment from './Components/Comment.js';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
+import SchoolsWebpage from './SchoolsWebpage.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
@@ -176,7 +176,7 @@ function App() {
             <Route path="" element={<LandingPage savePage={savePage} schools={schools}/>} />
             <Route path="/Login" element={<GoogleLogin/>} />
 
-            <Route path="/Schools" element={<SearchBar />} />
+            <Route path="/Schools" element={<SchoolsWebpage schools={schools} />} />
 
             <Route path="/main" element={<Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
 
