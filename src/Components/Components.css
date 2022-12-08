@@ -89,9 +89,12 @@
 .carta{
     margin-top: 1rem;
     margin-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-height: 7rem;
 }
 
-.btn, .btn-primary, .btn-lg, .btn-block{
+#primaryButton{
     background-color: #284b63 !important;
     margin: 0.3rem;
     align-self: center;
