@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./Components.css";
+import { Button } from "bootstrap";
+import { useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-function SearchBar({ placeholder, data }) {
+function SearchBar({ savePage, placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+  const navigate = useNavigate()
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -13,11 +17,27 @@ function SearchBar({ placeholder, data }) {
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
+
     if (searchWord === "") {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
     }
+
+
+    // have to use onClick to save state and then take state to display page
+
+  };
+
+  const clickLink = (e, value) => {
+
+    // Push Function
+    this.props.history.push({
+      pathname: '/main',
+        state: [value] // your data array of objects
+    })
+    console.log(value);
+    savePage(value);
   };
 
   const clearInput = () => {
@@ -36,14 +56,22 @@ function SearchBar({ placeholder, data }) {
         />
 
       </div>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              // have to use onClick to save state and then take state to display page
-              <a className="dataItem" href="main">
-                <p>{value.name} </p>
-              </a>
+              <div>
+                <Link
+                    to={{
+                      pathname: "/page",
+                      state: data // your data array of objects
+                    }}
+                  ></Link>
+                <a onClick={(e) => clickLink(e, value)} className="dataItem" href="main">
+                  <p>{value.name} </p>
+                </a>
+              </div>
+              
             );
           })}
         </div>

@@ -18,7 +18,6 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChang
 import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
 import SchoolsWebpage from './SchoolsWebpage.js';
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
   authDomain: "unirater-48c7b.firebaseapp.com",
@@ -39,7 +38,7 @@ function App() {
   const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
   const [comm, setComm] = useState([{ name: "Loading...", docID: "initial" }]);
   const [schools, setSchools] = useState([{ school: "school", docID: "initial" }]);
-  const [tab, setTabs] = useState("all");
+  //const [tab, setTabs] = useState("all");
   const [page, setPage] = useState(" ");
   const [classes, setClass] = useState(false);
   const [rent, setRent] = useState(false);
@@ -78,7 +77,7 @@ function App() {
           misc: misc,
           rent: rent,
           text: input,
-          school: "",
+          schoolID: page,
         });
         setClass(false)
         setRent(false)
@@ -88,8 +87,13 @@ function App() {
     };
 
     const saveTab = (tab) => {
-      setTabs(tab);
+      //setTabs(tab);
       sortTabData(tab);
+    };
+
+    const savePage = (page) => {
+      console.log(page)
+      setPage(page);
     };
 
     const saveTag = (tag) => {
@@ -120,6 +124,7 @@ function App() {
 
     //if tab === all then display all  //displays certain school's comments
     function sortTabData(tabName){
+      setComm([]);
       console.log('sortTabData');
       let dataClasses = [];
       let dataHousing = [];
@@ -128,24 +133,25 @@ function App() {
       let dataMisc = [];
 
       for (var i = 0; i < comments.length; i++){
-        if (comments[i].classes === true) {
-          dataClasses.push(comments[i]);
-        }
-        else if (comments[i].social === true){
-          dataSocial.push(comments[i]);
-        } else if (comments[i].rent === true){
-          dataHousing.push(comments[i]);
-        } else if (comments[i].food === true){
-          dataFood.push(comments[i]);
-        } else if (comments[i].misc === true){
-          dataMisc.push(comments[i]);
-        }
+        //if (page === comments[i].schoolID){
+          if (comments[i].classes === true) {
+            dataClasses.push(comments[i]);
+          } if (comments[i].social === true){
+            dataSocial.push(comments[i]);
+          } if (comments[i].rent === true){
+            dataHousing.push(comments[i]);
+            //console.log(dataHousing);
+          } if (comments[i].food === true){
+            dataFood.push(comments[i]);
+          } if (comments[i].misc === true){
+            dataMisc.push(comments[i]);
+          }
+        //}
       }
         //might need to use a diff state variable to not mess it up
         if (tabName === "all") {
           setComm(comments);
-        }
-        else if (tabName === 'social'){
+        } else if (tabName === 'social'){
           setComm(dataSocial);
         } else if (tabName === 'food'){
           setComm(dataFood);
@@ -156,7 +162,6 @@ function App() {
         }  else if (tabName === 'classes'){
           setComm(dataClasses);
         }
-        console.log(comm);
     }
 
    
@@ -168,12 +173,12 @@ function App() {
         <Routes>
 
 
-            <Route path="" element={<LandingPage schools={schools}/>} />
+            <Route path="" element={<LandingPage savePage={savePage} schools={schools}/>} />
             <Route path="/Login" element={<GoogleLogin/>} />
 
             <Route path="/Schools" element={<SchoolsWebpage schools={schools} />} />
 
-            <Route path="/main" element={<Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag}/>} />
+            <Route path="/main" element={<Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
 
         </Routes>
     </Router>
