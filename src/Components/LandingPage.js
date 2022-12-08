@@ -8,23 +8,23 @@ import HomeNav from './HomeNav';
 function LandingPage({savePage, schools, scLink}) {
 
   return (
-    <body>
-          <HomeNav/>
-    <div class="any">
-    <div class="wrapper">
-        <h1 id="name">Uni Ranker</h1>
-        <h2 id="lookup">Look up your School</h2>
+    <>
+
+    <HomeNav/>
+
+    <div class="plsWork">
+
+    <div id="name">
+
+        <h2 id="lookup">UNI RANKER</h2>
         <div className="App">
-              <SearchBar placeholder="Enter school name..." savePage={savePage} data={schools} key={schools.docs} scLink={scLink}/>
+              <SearchBar placeholder="Enter school name..." savePage={savePage} data={schools} key={schools.docs}/>
             </div>
     </div>
-    <div id="weather">
-        <h2 id="mainWeather"></h2>
-        <p id="weatherDescription"></p>
-    </div>
-    </div>
-    </body>
 
+    </div>
+
+    </>
 
   );
 }

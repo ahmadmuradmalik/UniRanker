@@ -17,7 +17,23 @@
     display: grid;
     text-align: center;
 }
-
+.plsWork {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background-image: url('banner.webp');
+     background-size: cover;
+     background-size: 100% 100%;
+     place-items: center;
+     display: grid;
+     text-align: center;
+     position: fixed;
+       top: 55px;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       margin: auto;
+       min-width: 50%;
+       min-height: 50%;
+}
 
 input[type=text]{
     color: blue;
