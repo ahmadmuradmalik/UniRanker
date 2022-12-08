@@ -9,17 +9,17 @@ function CommentBox({comments}) {
           </li>
 
        ))}*/
-       console.log(comments)
 
-  return (
-    <Container className="commentDiv">
-      {comments?.map((comment) => (
-          <Comment key={comment.docID} commentText={comment.text}>
-          </Comment>
-       ))}
-    </Container>
+   
+    return(
+      <Container className="commentDiv">
+          {comments?.map((comment) => (
+              <Comment key={comment.docID} commentText={comment.text}>
+              </Comment>
+          ))}
+        </Container>
+      );
     
-    );
 
     // listComments is a function that finds all the entries written by a user!
 }

@@ -3,14 +3,23 @@ import {Nav} from "react-bootstrap";
 import { withRouter } from "react-router";
 import './Components.css'
 
-function Sidebar() {
+function Sidebar({saveTab}) {
    
+    //have button alert button and then send all the way up
+    const clickTab = (selectedKey) => {
+        // connect back to webapge, check boxinput button
+        console.log(`changed to ${selectedKey}`)
+        saveTab(selectedKey);
+    };
+
+    //change sidebar to not block
+
     return (
         <>
     
             <Nav className="col-md-2 d-none d-md-block sidebar"
             activeKey="/home"
-            onSelect={selectedKey => alert(`selected ${selectedKey}`)}
+            onSelect={selectedKey => clickTab(selectedKey)}
             >
             <div className="sidebar-sticky"></div>
             <Nav.Item className="item">
@@ -23,7 +32,7 @@ function Sidebar() {
                 <Nav.Link eventKey="housing">Housing</Nav.Link>
             </Nav.Item>
             <Nav.Item className="item">
-                <Nav.Link eventKey="Social">Social</Nav.Link>
+                <Nav.Link eventKey="social">Social</Nav.Link>
             </Nav.Item>
             <Nav.Item className="item">
                 <Nav.Link eventKey="food">Food</Nav.Link>
@@ -35,13 +44,6 @@ function Sidebar() {
           
         </>
         );
-  };
-
-  function clickClass(){
-    return(
-        <div></div>
-        //comments are changed to their needed tags
-    );
   };
 
   export default Sidebar
