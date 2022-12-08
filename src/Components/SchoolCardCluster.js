@@ -16,7 +16,7 @@ function CardCluster({schoolName}) {
         <Col>
           <Card className="carta">
             <Card.Body>
-              <Card.Link href="main">
+              <Card.Link href={link}>
                 <button type="button" id="specButton"class="btn btn-primary btn-lg btn-block">{schoolName}</button>
               </Card.Link>
             </Card.Body>

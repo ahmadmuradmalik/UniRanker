@@ -86,6 +86,10 @@
     float: left;
 }
 
+.info{
+    margin: 3rem;
+}
+
 .carta{
     margin-top: 1rem;
     margin-bottom: 1rem;
