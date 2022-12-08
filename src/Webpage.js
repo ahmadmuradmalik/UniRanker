@@ -10,7 +10,7 @@ import BoxInput from "./Components/BoxInput.js";
 import TagButton from "./Components/TagButton.js";
 import './Components/Components.css'
 import CommentBox from './Components/CommentBox.js';
-import School from './Components/School.js'
+
 
 const my_Profile_Picture = "./profilePicture.jpg";
 
