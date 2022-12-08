@@ -13,8 +13,7 @@ function TextControlsExample({saveComment, saveTag}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         saveComment(input);
-        setInput("");
-        console.log("works");
+        setInput(" ");
     };
 
     return (

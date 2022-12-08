@@ -29,7 +29,7 @@ function Sidebar({saveTab}) {
                 <Nav.Link eventKey="classes">Classes</Nav.Link>
             </Nav.Item>
             <Nav.Item className="item">
-                <Nav.Link eventKey="housing">Housing</Nav.Link>
+                <Nav.Link eventKey="rent">Housing</Nav.Link>
             </Nav.Item>
             <Nav.Item className="item">
                 <Nav.Link eventKey="social">Social</Nav.Link>

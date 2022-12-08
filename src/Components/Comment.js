@@ -2,8 +2,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import './Components.css';
 import TagButton from './TagButton.js';
 import Tag from './Tag.js';
+import TagSection from "./TagSection";
 
-function Comment({commentText}) {
+function Comment({commentText, classes, social, rent, food, misc}) {
+
+    let tagArr = [classes, social, rent, food, misc];
 
   return (
     <Container className="comment">
@@ -12,11 +15,8 @@ function Comment({commentText}) {
             <div className="commentInfo">
                 <h3 className="username">Name</h3>
                 <p className="commentPara">{commentText}</p>
-                <p className="commentPara">h</p>
+                <TagSection tags={tagArr}/>
             </div>
-        </Row>
-        <Row>
-            <TagButton></TagButton>
         </Row>
         
     </Container>

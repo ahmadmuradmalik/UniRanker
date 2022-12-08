@@ -77,6 +77,10 @@
     float: left;
 }
 
-.commentPara .username .commentInfo{
+.commentPara .username .commentInfo .badges{
+    float: left;
+}
+
+.badges{
     float: left;
 }
