@@ -22,6 +22,7 @@ import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChang
 import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
 import SchoolsWebpage from './SchoolsWebpage.js';
 import { auth } from "./Firebase.js";
+import { tab } from '@testing-library/user-event/dist/tab.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
@@ -113,8 +114,8 @@ function App() {
     };
 
     const savePage = (page) => {
-      console.log(page)
       setPage(page);
+      sortTabData(tab);
     };
 
     const saveTag = (tag) => {
@@ -154,7 +155,8 @@ function App() {
       let dataMisc = [];
 
       for (var i = 0; i < comments.length; i++){
-        //if (page === comments[i].schoolID){
+       // if (page === comments[i].schoolID){
+          
           if (comments[i].classes === true) {
             dataClasses.push(comments[i]);
           } if (comments[i].social === true){
@@ -167,7 +169,7 @@ function App() {
           } if (comments[i].misc === true){
             dataMisc.push(comments[i]);
           }
-        //}
+       // }
       }
         //might need to use a diff state variable to not mess it up
         if (tabName === "all") {
@@ -194,10 +196,10 @@ function App() {
         <Routes>
 
 
-            <Route path="" element={<LandingPage savePage={savePage} schools={schools}/>} />
+            <Route path="" element={<LandingPage savePage={savePage} schools={schools} scLink={page}/>} />
             <Route path="/Login" element={<GoogleLogin setIsAuth={setIsAuth} saveUser={saveUser}/>}/>
 
-            <Route path="/Schools" element={<SchoolsWebpage schools={schools}/>} />
+            <Route path="/Schools" element={<SchoolsWebpage schools={schools} savePage={savePage}/>} />
 
             <Route path="/main" element={<Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
 

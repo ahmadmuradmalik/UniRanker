@@ -5,7 +5,7 @@ import { useNavigate} from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
-function SearchBar({ savePage, placeholder, data }) {
+function SearchBar({ savePage, placeholder, data, scLink}) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const navigate = useNavigate()
@@ -67,7 +67,7 @@ function SearchBar({ savePage, placeholder, data }) {
                       state: data // your data array of objects
                     }}
                   ></Link>
-                <a onClick={(e) => clickLink(e, value)} className="dataItem" href="main">
+                <a onClick={(e) => clickLink(e, value)} className="dataItem" href={value.ID}>
                   <p>{value.name} </p>
                 </a>
               </div>

@@ -18,7 +18,7 @@ import App from './App.js';
 const my_Profile_Picture = "./profilePicture.jpg";
 
 
-function SchoolsWebpage({schools}) {
+function SchoolsWebpage({schools, savePage}) {
 
   //if/else what school return comments related to that school
   //pass those comments into designated place
@@ -30,7 +30,7 @@ function SchoolsWebpage({schools}) {
           <HomeNav></HomeNav>
           </Row>
         <Row>
-          <SchoolCard schools={schools}></SchoolCard>
+          <SchoolCard schools={schools} savePage={savePage}></SchoolCard>
         </Row>        
       </Row>
     </div>

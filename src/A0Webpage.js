@@ -45,7 +45,7 @@ function Webpage({saveComment, comments, saveTab, saveTag, page}) {
             <div className="schoolInfoDiv">
                   <img className="schoolPic" alt="" src="https://www.tclf.org/sites/default/files/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_byCharlieNguyen-Flickr_2008_001_Sig.jpg" ></img>
                   <h1 className="schoolName">{webpageName}</h1>
-                  <Row>
+                  <Row className="info">
                     <p className="schoolInfo">The University of California, Berkeley is a public land-grant research university in Berkeley, California. Established in 1868 as the University of California, it is the state's first land-grant university and the founding campus of the University of California system.</p>
                   </Row>
             </div>

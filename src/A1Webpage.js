@@ -45,7 +45,7 @@ function Webpage({saveComment, comments, saveTab, saveTag, page}) {
             <div className="schoolInfoDiv">
                   <img className="schoolPic" alt="" src="https://alisteducation.com/wp-content/uploads/2020/07/GettyImages-1206596174.jpg" ></img>
                   <h1 className="schoolName">{webpageName}</h1>
-                  <Row>
+                  <Row className="info">
                     <p className="schoolInfo">The University of Southern California is a private research university in Los Angeles, California, United States. Founded in 1880 by Robert M. Widney, it is the oldest private research university in California.</p>
                   </Row>
             </div>
