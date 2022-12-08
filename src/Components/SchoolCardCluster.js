@@ -17,7 +17,7 @@ function CardCluster({schoolName}) {
           <Card className="carta">
             <Card.Body>
               <Card.Link href="main">
-                <button type="button" id="primaryButton"class="btn btn-primary btn-lg btn-block">{schoolName}</button>
+                <button type="button" id="specButton"class="btn btn-primary btn-lg btn-block">{schoolName}</button>
               </Card.Link>
             </Card.Body>
           </Card>
