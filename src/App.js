@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 // ok import Comment from './Comment.js';
 import './App.css';
 import Webpage from './Webpage.js';
+import A0Webpage from './A0Webpage';
+import A1Webpage from './A1Webpage';
+import A2Webpage from './A2Webpage';
 import LandingPage from './Components/LandingPage.js';
 import GoogleLogin from './Components/GoogleLogin.js';
 import School from './Components/School.js';
@@ -17,6 +20,8 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { onSnapshot, getFirestore, addDoc, collection, query, doc,  where, getDocs, Timestamp , orderBy, limit } from 'firebase/firestore';
+import SchoolsWebpage from './SchoolsWebpage.js';
+import { auth } from "./Firebase.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDx-38gNltFn6Zr3F9uuUOJ9G6o02BBKxE",
@@ -38,6 +43,7 @@ function App() {
   const [comments, setComments] = useState([{ name: "Loading...", docID: "initial" }]);
   const [comm, setComm] = useState([{ name: "Loading...", docID: "initial" }]);
   const [schools, setSchools] = useState([{ school: "school", docID: "initial" }]);
+  const [user, setUser] = useState([{ user: "Guest"}]);
   //const [tab, setTabs] = useState("all");
   const [page, setPage] = useState(" ");
   const [classes, setClass] = useState(false);
@@ -77,6 +83,7 @@ function App() {
           misc: misc,
           rent: rent,
           text: input,
+          author: auth.currentUser.displayName,
           schoolID: page,
         });
         setClass(false)
@@ -85,6 +92,20 @@ function App() {
         setSocial(false)
         setMisc(false)
     };
+
+    const saveUser = (user) => {
+      setUser(user);
+    };
+
+    const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      window.location.pathname = "/login";
+    });
+  };
 
     const saveTab = (tab) => {
       //setTabs(tab);
@@ -174,13 +195,18 @@ function App() {
 
 
             <Route path="" element={<LandingPage savePage={savePage} schools={schools}/>} />
-            <Route path="/Login" element={<GoogleLogin/>} />
+            <Route path="/Login" element={<GoogleLogin setIsAuth={setIsAuth} saveUser={saveUser}/>}/>
 
-            <Route path="/Schools" element={<SearchBar />} />
+            <Route path="/Schools" element={<SchoolsWebpage schools={schools}/>} />
 
             <Route path="/main" element={<Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
 
-        </Routes>
+            <Route path="/a0" element={<A0Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
+            <Route path="/a1" element={<A1Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
+            <Route path="/a2" element={<A2Webpage saveComment={saveComment} comments={comm} saveTab={saveTab} saveTag={saveTag} page={page}/>} />
+            
+
+            </ Routes>
     </Router>
 
     </div>

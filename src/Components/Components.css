@@ -77,10 +77,18 @@
     float: left;
 }
 
-.commentPara .username .commentInfo .badges{
+.commentPara .schoolPara .username .commentInfo{
     float: left;
 }
 
 .badges{
     float: left;
+}
+
+.carta{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.info{
+    margin: 3rem;
 }

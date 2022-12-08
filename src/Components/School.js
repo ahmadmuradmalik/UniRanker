@@ -1,3 +1,4 @@
+/*
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -26,7 +27,7 @@ const my_Profile_Picture = "./profilePicture.jpg";
 export default School; */
 
 // bootstrap card and grid layout
-
+/*
 function School() {
   return (
     <Row xs={1} md={2} className="g-4">
@@ -51,3 +52,4 @@ function School() {
 }
 
 export default School;
+*/

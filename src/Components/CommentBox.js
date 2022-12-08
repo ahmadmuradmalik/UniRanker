@@ -15,7 +15,7 @@ function CommentBox({comments}) {
     return(
       <Container className="commentDiv">
           {comments?.map((comment) => (
-              <Comment key={comment.docID} commentText={comment.text} classes={comment.classes} social={comment.social} 
+              <Comment key={comment.docID} author={comment.author} commentText={comment.text} classes={comment.classes} social={comment.social} 
               food={comment.food} rent={comment.rent} misc={comment.misc}>
               </Comment>
           ))}

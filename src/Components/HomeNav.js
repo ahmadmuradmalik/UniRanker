@@ -10,7 +10,6 @@ function HomeNav() {
         <Container>
           <Navbar.Brand href="/">UniRanker</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="main">MainDisplayPage</Nav.Link>
             <Nav.Link href="Schools">Schools</Nav.Link>
             <Nav.Link href="Login">Sign Up/Login</Nav.Link>
           </Nav>
